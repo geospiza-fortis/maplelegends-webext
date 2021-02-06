@@ -4,16 +4,16 @@
   "description": "A web extension",
   "scripts": {
     "build": "rollup -c",
-    "dev": "concurrently --kill-others \"rollup -c -w\" \"web-ext run --source-dir dist\"",
+    "dev": "concurrently --kill-others \"rollup -c -w\" \"web-ext run --source-dir dist --verbose\"",
     "prepare": "npm run build"
   },
   "author": "geospiza <geospiza@pm.me>",
   "license": "MIT",
   "devDependencies": {
+    "concurrently": "^5.3.0",
     "rollup": "^2.38.4",
-    "rollup-plugin-copy": "^3.3.0",
-    "web-ext": "^5.5.0",
-    "concurrently": "^5.3.0"
+    "rollup-plugin-copy-watch": "0.0.1",
+    "web-ext": "^5.5.0"
   },
   "dependencies": {}
 }
