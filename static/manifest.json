@@ -10,6 +10,7 @@
   },
   "permissions": [
     "https://maplelegends.com/*",
+    "https://maplestory.io/api/character/*",
     "tabs",
     "webNavigation",
     "https://storage.googleapis.com/geospiza/query/maplelegends-online-count-7-day.json"
