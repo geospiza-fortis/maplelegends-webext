@@ -12,7 +12,7 @@ export default [
     output: [{ file: "dist/content-bundle.js", format: "iife" }],
     plugins: [
       svelte({ compilerOptions: { dev: !production } }),
-      css({ output: "bundle.css" }),
+      css({ output: "content-bundle.css" }),
       resolve({ browser: true }),
       commonjs(),
       copy({
@@ -24,11 +24,6 @@ export default [
   {
     input: "src/background.js",
     output: [{ file: "dist/background-bundle.js", format: "iife" }],
-    plugins: [
-      css({ output: "bundle.css" }),
-      resolve({ browser: true }),
-      commonjs(),
-    ],
   },
   {
     input: "src/popup.js",

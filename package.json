@@ -23,7 +23,8 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
-    "c3.js": "^1.0.0",
+    "chart.js": "^2.9.4",
+    "chartjs-adapter-dayjs": "^1.0.0",
     "dayjs": "^1.10.4",
     "lodash": "^4.17.20",
     "p-retry": "^4.3.0"

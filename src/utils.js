@@ -8,15 +8,15 @@ function parseLevelsTable(content) {
     (text) => text,
   ];
   let rows = [...content.querySelectorAll("tr")];
-  let header = [...rows[0].querySelectorAll("th")].map(
-    (cell) => cell.innerText
+  let header = [...rows[0].querySelectorAll("th")].map((cell) =>
+    cell.innerText.trim()
   );
   let data = rows.slice(1);
 
   let results = [];
   for (let row of data) {
     let parsed = [...row.querySelectorAll("td")].map((cell, i) =>
-      formatters[i](cell.innerText)
+      formatters[i](cell.innerText.trim())
     );
     let obj = Object.fromEntries(zip(header, parsed));
     results.push(obj);
