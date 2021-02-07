@@ -1,8 +1,6 @@
 import pRetry from "p-retry";
 import { parseLevelsTable } from "./utils.js";
-import LevelHistoryPlot from "./LevelHistoryPlot.svelte";
-
-document.body.style.border = "10px solid purple";
+import LevelHistoryPlot from "./components/LevelHistoryPlot.svelte";
 
 const PLOT_ID = "extensionPlot";
 function insertPlot() {

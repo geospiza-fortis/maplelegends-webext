@@ -1,5 +1,5 @@
 <script>
-  import TimeSeriesPlot from "./components/TimeSeriesPlot.svelte";
+  import TimeSeriesPlot from "./TimeSeriesPlot.svelte";
   // Data gathered by the content script
   export let data;
 </script>

@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import TimeSeriesPlot from "./components/TimeSeriesPlot.svelte";
+  import TimeSeriesPlot from "./TimeSeriesPlot.svelte";
 
   let data;
   onMount(async () => {

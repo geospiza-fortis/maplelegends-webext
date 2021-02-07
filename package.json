@@ -1,7 +1,7 @@
 {
-  "name": "test-extension",
-  "version": "0.1.0",
-  "description": "A web extension",
+  "name": "maplelegends-webext",
+  "version": "0.2.0",
+  "description": "Adds plots to leveling history and a view into current status",
   "scripts": {
     "build": "rollup -c",
     "watch-js": "rollup -c -w",

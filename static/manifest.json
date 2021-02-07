@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "test-plugin",
+  "name": "maplelegends-webext",
   "version": "1.0",
 
-  "description": "Adds a red border to all webpages matching mozilla.org.",
+  "description": "Adds plots to leveling history and a view into current status of the site.",
 
   "icons": {
     "48": "icons/omok.png"
