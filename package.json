@@ -3,7 +3,9 @@
   "version": "0.2.0",
   "description": "Adds plots to leveling history and a view into current status",
   "scripts": {
-    "build": "rollup -c",
+    "build-js": "rollup -c",
+    "build-ext": "web-ext build --source-dir dist --overwrite-dest",
+    "build": "npm run build-js && npm run build-ext",
     "watch-js": "rollup -c -w",
     "watch-ext": "web-ext run --source-dir dist",
     "dev": "concurrently --kill-others \"npm:watch-js\" \"npm:watch-ext\"",
