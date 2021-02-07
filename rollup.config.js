@@ -11,12 +11,23 @@ export default [
     input: "src/content.js",
     output: [{ file: "dist/content-bundle.js", format: "iife" }],
     plugins: [
+      svelte({ compilerOptions: { dev: !production } }),
+      css({ output: "bundle.css" }),
       resolve({ browser: true }),
       commonjs(),
       copy({
         targets: [{ src: "static/*", dest: "dist" }],
         watch: production ? null : "static",
       }),
+    ],
+  },
+  {
+    input: "src/background.js",
+    output: [{ file: "dist/background-bundle.js", format: "iife" }],
+    plugins: [
+      css({ output: "bundle.css" }),
+      resolve({ browser: true }),
+      commonjs(),
     ],
   },
   {

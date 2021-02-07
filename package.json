@@ -4,7 +4,9 @@
   "description": "A web extension",
   "scripts": {
     "build": "rollup -c",
-    "dev": "concurrently --kill-others \"rollup -c -w\" \"web-ext run --source-dir dist --verbose\"",
+    "watch-js": "rollup -c -w",
+    "watch-ext": "web-ext run --source-dir dist",
+    "dev": "concurrently --kill-others \"npm:watch-js\" \"npm:watch-ext\"",
     "prepare": "npm run build"
   },
   "author": "geospiza <geospiza@pm.me>",
@@ -21,7 +23,9 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "c3.js": "^1.0.0",
     "dayjs": "^1.10.4",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "p-retry": "^4.3.0"
   }
 }

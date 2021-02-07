@@ -8,7 +8,7 @@
   "icons": {
     "48": "icons/omok.png"
   },
-  "permissions": ["https://maplelegends.com/*"],
+  "permissions": ["https://maplelegends.com/*", "tabs", "webNavigation"],
 
   "content_scripts": [
     {
@@ -16,6 +16,9 @@
       "js": ["content-bundle.js"]
     }
   ],
+  "background": {
+    "scripts": ["background-bundle.js"]
+  },
   "browser_action": {
     "default_icon": "icons/omok.png",
     "default_title": "MapleLegends extension",
