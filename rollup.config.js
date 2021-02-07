@@ -9,8 +9,10 @@ const production = !process.env.ROLLUP_WATCH;
 export default [
   {
     input: "src/content.js",
-    output: [{ file: "dist/content-bundle.js", format: "es" }],
+    output: [{ file: "dist/content-bundle.js", format: "iife" }],
     plugins: [
+      resolve({ browser: true }),
+      commonjs(),
       copy({
         targets: [{ src: "static/*", dest: "dist" }],
         watch: production ? null : "static",

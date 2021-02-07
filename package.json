@@ -20,5 +20,8 @@
     "rollup-plugin-svelte": "^7.0.0",
     "svelte": "^3.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "dayjs": "^1.10.4",
+    "lodash": "^4.17.20"
+  }
 }
