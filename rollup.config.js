@@ -2,6 +2,7 @@ import copy from "rollup-plugin-copy-watch";
 import svelte from "rollup-plugin-svelte";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
+import { terser } from "rollup-plugin-terser";
 import css from "rollup-plugin-css-only";
 
 const production = !process.env.ROLLUP_WATCH;
@@ -19,11 +20,13 @@ export default [
         targets: [{ src: "static/*", dest: "dist" }],
         watch: production ? null : "static",
       }),
+      production && terser(),
     ],
   },
   {
     input: "src/background.js",
     output: [{ file: "dist/background-bundle.js", format: "iife" }],
+    plugins: [production && terser()],
   },
   {
     input: "src/popup.js",
@@ -38,6 +41,7 @@ export default [
       css({ output: "bundle.css" }),
       resolve({ browser: true, dedupe: ["svelte"] }),
       commonjs(),
+      production && terser(),
     ],
   },
 ];
