@@ -1,42 +1,45 @@
 <script>
   import { onMount } from "svelte";
 
+  const BASE_URL = "https://maplelegends.com";
   let loggedin = false;
   let accountDetails;
-  let characters;
-
-  function parseAccountCharacters(content) {
-    return [...content.querySelectorAll(".spa")]
-      .filter(node => node.innerText)
-      .map(node => node.innerText);
-  }
+  let serverStatus;
+  let uniqueUsers;
 
   onMount(async () => {
-    let resp = await fetch("https://maplelegends.com/my/account");
+    let resp = await fetch(`${BASE_URL}/my/account`);
     let html = await resp.text();
     let parser = new DOMParser();
     let doc = parser.parseFromString(html, "text/html");
+    serverStatus = doc.querySelector("#server_status").parentNode;
+    uniqueUsers = doc.querySelector(".unique_users_tooltip");
     loggedin = doc.querySelector("#loginform") == null;
     accountDetails = doc.querySelector("#page-content");
-    if (loggedin && accountDetails) {
-      characters = parseAccountCharacters(accountDetails);
+    // replace links in account details so they point to the maplelegends base
+    for (let node of accountDetails.querySelectorAll("a")) {
+      node.href = `${BASE_URL}/${node.href.split("/").reverse()[0]}`;
     }
   });
 </script>
 
 <main>
-  <a href="https://maplelegends.com">Go to MapleLegends</a>
+  <h1>
+    <a href="https://maplelegends.com">MapleLegends</a>
+  </h1>
+  {#if serverStatus && uniqueUsers}
+    <h2>Server Info</h2>
+    Server Status:
+    <b>
+      {@html serverStatus.innerHTML}
+    </b>
+    <br />
+    {@html uniqueUsers.innerHTML}
+  {/if}
   {#if loggedin}
-    {#if characters}
-      <h2>Character List</h2>
-      <ul>
-        {#each characters as char}
-          <li>{char}</li>
-        {/each}
-      </ul>
-    {/if}
     {@html accountDetails.innerHTML}
   {:else}
+    <h2>Account details</h2>
     <p>Not logged in.</p>
   {/if}
 </main>
