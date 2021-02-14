@@ -1,6 +1,7 @@
 body {
   background-image: url("https://maplelegends.com/static/images/bg.png");
   background-position: center bottom;
+  width: 450px;
 }
 
 main {
