@@ -31,6 +31,18 @@
   });
 </script>
 
+<style>
+  :global(body) {
+    background-image: url("https://maplelegends.com/static/images/bg.png");
+    background-position: center bottom;
+  }
+  main {
+    background-color: #ffffff;
+    opacity: 0.7;
+    padding: 1em;
+  }
+</style>
+
 <main>
   <h1>
     <a href="https://maplelegends.com" target="_blank">MapleLegends</a>
