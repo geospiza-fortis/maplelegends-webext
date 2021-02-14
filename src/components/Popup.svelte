@@ -39,13 +39,23 @@
   main {
     background-color: #ffffff;
     opacity: 0.7;
-    padding: 1em;
+    padding: 0.25em 1em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  h1 a {
+    text-decoration: none;
   }
 </style>
 
 <main>
   <h1>
-    <a href="https://maplelegends.com" target="_blank">MapleLegends</a>
+    <a href="https://maplelegends.com" target="_blank">🍁 MapleLegends 🍁</a>
   </h1>
   <h2>Server Info</h2>
   {#if serverStatus && uniqueUsers}
@@ -63,6 +73,11 @@
     {@html accountDetails.innerHTML}
   {:else}
     <h2>Account details</h2>
-    <p>Not logged in.</p>
+    <p>
+      Not logged in.
+      <a href="https://maplelegends.com" target="_blank">
+        Sign in to see details.
+      </a>
+    </p>
   {/if}
 </main>
