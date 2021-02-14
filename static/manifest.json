@@ -23,7 +23,8 @@
     },
     {
       "matches": ["*://maplelegends.com/vote"],
-      "js": ["content/voting.js"]
+      "js": ["content/voting.js"],
+      "css": ["content/voting.css"]
     }
   ],
   "background": {

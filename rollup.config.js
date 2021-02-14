@@ -46,6 +46,7 @@ export default [
     output: [{ file: "dist/content/voting.js", format: "iife" }],
     plugins: [
       svelte({ compilerOptions: { dev: !production } }),
+      css({ output: "voting.css" }),
       resolve({ browser: true }),
       commonjs(),
       production && terser(),
