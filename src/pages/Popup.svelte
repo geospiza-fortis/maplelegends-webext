@@ -1,8 +1,23 @@
 <script>
-  import { onMount } from "svelte";
+  import page from "page";
   import Summary from "./Summary.svelte";
+  import About from "./About.svelte";
+  import Navbar from "./Navbar.svelte";
+
+  let component = Summary;
+
+  const routes = [
+    { url: "/", name: "Home", component: Summary },
+    { url: "/about", name: "About", component: About }
+  ];
+
+  for (let route of routes) {
+    page(route.url, () => (component = route.component));
+  }
+  page({ hashbang: false });
 </script>
 
 <main>
-  <Summary />
+  <Navbar {routes} />
+  <svelte:component this={component} />
 </main>

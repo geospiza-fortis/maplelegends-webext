@@ -4,8 +4,20 @@ import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import { terser } from "rollup-plugin-terser";
 import css from "rollup-plugin-css-only";
+import replace from "@rollup/plugin-replace";
+import child_process from "child_process";
 
 const production = !process.env.ROLLUP_WATCH;
+
+let replaceVersion = () =>
+  replace({
+    __VERSION__: process.env.npm_package_version,
+    __GIT_COMMIT__: child_process
+      .execSync("git rev-parse HEAD")
+      .toString()
+      .trim()
+      .slice(0, 8),
+  });
 
 export default [
   {
@@ -41,6 +53,7 @@ export default [
       css({ output: "bundle.css" }),
       resolve({ browser: true, dedupe: ["svelte"] }),
       commonjs(),
+      replaceVersion(),
       production && terser(),
     ],
   },
