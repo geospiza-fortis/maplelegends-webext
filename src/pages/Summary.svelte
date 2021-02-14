@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import OnlinePlot from "./OnlinePlot.svelte";
+  import OnlinePlot from "../components/OnlinePlot.svelte";
 
   const BASE_URL = "https://maplelegends.com";
   let loggedin = false;
@@ -31,26 +31,29 @@
   });
 </script>
 
-<main>
-  <h1>
-    <a href="https://maplelegends.com" target="_blank">MapleLegends</a>
-  </h1>
-  <h2>Server Info</h2>
-  {#if serverStatus && uniqueUsers}
-    Server Status:
-    <b>
-      {@html serverStatus.innerHTML}
-    </b>
-    <br />
-    {@html uniqueUsers.innerHTML}
-  {:else}
-    <p>Waiting for response...</p>
-  {/if}
-  <OnlinePlot />
-  {#if loggedin}
-    {@html accountDetails.innerHTML}
-  {:else}
-    <h2>Account details</h2>
-    <p>Not logged in.</p>
-  {/if}
-</main>
+<h1>
+  <a href="https://maplelegends.com" target="_blank">🍁 MapleLegends 🍁</a>
+</h1>
+<h2>Server Info</h2>
+{#if serverStatus && uniqueUsers}
+  Server Status:
+  <b>
+    {@html serverStatus.innerHTML}
+  </b>
+  <br />
+  {@html uniqueUsers.innerHTML}
+{:else}
+  <p>Waiting for response...</p>
+{/if}
+<OnlinePlot />
+{#if loggedin}
+  {@html accountDetails.innerHTML}
+{:else}
+  <h2>Account details</h2>
+  <p>
+    Not logged in.
+    <a href="https://maplelegends.com" target="_blank">
+      Sign in to see details.
+    </a>
+  </p>
+{/if}
