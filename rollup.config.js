@@ -21,13 +21,9 @@ let replaceVersion = () =>
 
 export default [
   {
-    input: "src/content.js",
-    output: [{ file: "dist/content-bundle.js", format: "iife" }],
+    input: "src/background.js",
+    output: [{ file: "dist/background-bundle.js", format: "iife" }],
     plugins: [
-      svelte({ compilerOptions: { dev: !production } }),
-      css({ output: "content-bundle.css" }),
-      resolve({ browser: true }),
-      commonjs(),
       copy({
         targets: [{ src: "static/*", dest: "dist" }],
         watch: production ? null : "static",
@@ -36,9 +32,14 @@ export default [
     ],
   },
   {
-    input: "src/background.js",
-    output: [{ file: "dist/background-bundle.js", format: "iife" }],
-    plugins: [production && terser()],
+    input: "src/content/leveling.js",
+    output: [{ file: "dist/content/leveling.js", format: "iife" }],
+    plugins: [
+      svelte({ compilerOptions: { dev: !production } }),
+      resolve({ browser: true }),
+      commonjs(),
+      production && terser(),
+    ],
   },
   {
     input: "src/popup.js",

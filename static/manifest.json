@@ -19,7 +19,7 @@
   "content_scripts": [
     {
       "matches": ["*://maplelegends.com/levels?name*"],
-      "js": ["content-bundle.js"]
+      "js": ["content/leveling.js"]
     }
   ],
   "background": {
