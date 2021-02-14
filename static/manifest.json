@@ -20,6 +20,10 @@
     {
       "matches": ["*://maplelegends.com/levels?name*"],
       "js": ["content/leveling.js"]
+    },
+    {
+      "matches": ["*://maplelegends.com/vote"],
+      "js": ["content/voting.js"]
     }
   ],
   "background": {

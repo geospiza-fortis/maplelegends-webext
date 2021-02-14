@@ -42,6 +42,16 @@ export default [
     ],
   },
   {
+    input: "src/content/voting.js",
+    output: [{ file: "dist/content/voting.js", format: "iife" }],
+    plugins: [
+      svelte({ compilerOptions: { dev: !production } }),
+      resolve({ browser: true }),
+      commonjs(),
+      production && terser(),
+    ],
+  },
+  {
     input: "src/popup.js",
     output: {
       sourcemap: true,
