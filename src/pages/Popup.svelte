@@ -8,6 +8,7 @@
 
   const routes = [
     { url: "/", name: "Home", component: Summary },
+    { url: "https://maplelegends.com/vote", name: "Vote" },
     { url: "/about", name: "About", component: About }
   ];
 
