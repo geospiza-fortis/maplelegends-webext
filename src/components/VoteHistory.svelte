@@ -96,7 +96,7 @@
       </div>
     {/if}
   {/if}
-  {#if votes && votes.length > 0}
+  {#if votes}
     <h3>Voting History</h3>
     <p>
       <b>Note:</b>
@@ -105,7 +105,13 @@
       <a href="https://maplelegends.com/my/account">account details</a>
       to confirm your vote.
     </p>
-    <Table data={votes} {columns} paginationSize={5} />
+    {#if votes.length > 0}
+      <Table data={votes} {columns} paginationSize={5} />
+    {:else}
+      <p>
+        <i>No votes recorded yet.</i>
+      </p>
+    {/if}
     <br />
   {/if}
 </div>
