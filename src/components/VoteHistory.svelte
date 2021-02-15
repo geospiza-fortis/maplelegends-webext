@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import Table from "./Table.svelte";
+  import { storageGet } from "../utils.js";
   import dayjs from "dayjs";
   import relativeTime from "dayjs/plugin/relativeTime";
   import localizedFormat from "dayjs/plugin/localizedFormat";
@@ -36,9 +37,8 @@
   }
 
   onMount(async () => {
-    votes =
-      (await chrome.storage.local.get("voting-history"))["voting-history"] ||
-      [];
+    votes = (await storageGet("voting-history")) || [];
+    console.log(votes);
     if (votes.length > 0) {
       username = votes[votes.length - 1].username;
     }

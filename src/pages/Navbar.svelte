@@ -34,7 +34,11 @@
   <ul>
     {#each routes as route}
       <li>
-        <a href={route.url}>{route.name}</a>
+        {#if !route.component}
+          <a href={route.url} target="_blank">{route.name}</a>
+        {:else}
+          <a href={route.url}>{route.name}</a>
+        {/if}
       </li>
     {/each}
   </ul>

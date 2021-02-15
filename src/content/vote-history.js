@@ -1,3 +1,5 @@
+import { storageGet, storageSet } from "../utils.js";
+
 // Add history to local indexeddb about voting history
 function parseGtop(location) {
   let result = location.match("pingUsername=(.*)&?");
@@ -25,10 +27,9 @@ async function injectHistory() {
     };
   }
   data["timestamp"] = new Date().toISOString();
-  let votes =
-    (await chrome.storage.local.get("voting-history"))["voting-history"] || [];
+  let votes = (await storageGet("voting-history")) || [];
   votes.push(data);
-  await chrome.storage.local.set({ "voting-history": votes });
+  await storageSet({ "voting-history": votes });
 }
 
 (async () => {

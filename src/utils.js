@@ -24,4 +24,16 @@ function parseLevelsTable(content) {
   return results;
 }
 
-export { parseLevelsTable };
+function storageGet(key) {
+  return new Promise((resolve, _) => {
+    chrome.storage.local.get(key, (items) => resolve(items[key]));
+  });
+}
+
+function storageSet(obj) {
+  return new Promise((resolve, _) => {
+    chrome.storage.local.set(obj, () => resolve());
+  });
+}
+
+export { parseLevelsTable, storageGet, storageSet };
