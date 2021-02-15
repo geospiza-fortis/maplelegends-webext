@@ -53,6 +53,16 @@ export default [
     ],
   },
   {
+    input: "src/content/vote-history.js",
+    output: [{ file: "dist/content/vote-history.js", format: "iife" }],
+    plugins: [
+      svelte({ compilerOptions: { dev: !production } }),
+      resolve({ browser: true }),
+      commonjs(),
+      production && terser(),
+    ],
+  },
+  {
     input: "src/popup.js",
     output: {
       sourcemap: true,

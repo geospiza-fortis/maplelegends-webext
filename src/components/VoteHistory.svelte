@@ -1,5 +1,9 @@
 <script>
+  import { onMount } from "svelte";
+  import Table from "./Table.svelte";
+
   let username;
+  let votes;
 
   const choices = ["heart", "cheers", "kiss", "sparkly"];
   let red_choice = "default";
@@ -7,21 +11,45 @@
   function randomChoice() {
     return choices[Math.floor(Math.random() * choices.length)];
   }
+
+  onMount(async () => {
+    votes =
+      (await chrome.storage.local.get("voting-history"))["voting-history"] ||
+      [];
+  });
 </script>
 
 <style>
   .content {
     padding: 0 4em;
-    text-align: center;
-    margin: auto;
+    margin: 0 auto;
+  }
+  :global(table) {
+    margin: 0 auto;
+  }
+  :global(th, td) {
+    padding: 5px;
   }
 </style>
 
 <div class="content">
-  <label>
-    Username:
-    <input bind:value={username} />
-  </label>
+  {#if votes && votes.length > 0}
+    <h3>Voting History</h3>
+    <p>
+      <b>Note:</b>
+      This is the time the site was last visited, and does not necessarily mean
+      that the vote went through. Check your account details to confirm your
+      vote.
+    </p>
+    <Table data={votes} paginationSize={5} />
+    <br />
+  {/if}
+  <div style="text-align:center">
+    <label>
+      Username:
+      <input bind:value={username} />
+    </label>
+  </div>
   {#if username}
     <div class="row">
       <div class="col-md-offset-3 col-md-3 text-center">
