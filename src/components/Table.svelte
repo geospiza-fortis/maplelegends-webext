@@ -48,7 +48,7 @@
     {#each chunked[idx] as row}
       <tr>
         {#each columns as column}
-          <td>
+          <td on:click={() => (column.onClick ? column.onClick(row) : null)}>
             {#if column.html}
               {@html column.format(row)}
             {:else}{column.format(row)}{/if}
