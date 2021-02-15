@@ -1,7 +1,7 @@
 {
   "name": "maplelegends-webext",
-  "version": "0.2.0",
-  "description": "Adds plots to leveling history and a view into current status",
+  "version": "0.3.0",
+  "description": "Adds plots to leveling history, tracks current server status, and maintains voting history.",
   "scripts": {
     "build-js": "rollup -c",
     "build-ext": "web-ext build --source-dir dist --overwrite-dest",
