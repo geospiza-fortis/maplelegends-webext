@@ -2,6 +2,10 @@
   import { onMount } from "svelte";
   import Chart from "chart.js";
   import "chartjs-adapter-dayjs";
+  import dayjs from "dayjs";
+  import localizedFormat from "dayjs/plugin/localizedFormat";
+  dayjs.extend(localizedFormat);
+
   // plot a single trend-line
   export let data;
   export let label;
@@ -37,7 +41,14 @@
         responsive: true,
         tooltips: {
           mode: "index",
-          intersect: false
+          intersect: false,
+          callbacks: {
+            title: (item, data) => {
+              return dayjs(item[0].label)
+                .utc()
+                .format("lll");
+            }
+          }
         },
         hover: {
           mode: "nearest",
