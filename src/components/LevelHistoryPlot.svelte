@@ -4,7 +4,9 @@
   export let data;
 </script>
 
-<TimeSeriesPlot
-  {data}
-  label="Level History"
-  transform={data => data.map(row => ({ x: row.Date, y: row.Level }))} />
+<div class="col-md-offset-1 col-md-10">
+  <TimeSeriesPlot
+    {data}
+    label="Level History"
+    transform={data => data.map(row => ({ x: row.Date, y: row.Level }))} />
+</div>
