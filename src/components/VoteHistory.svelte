@@ -38,9 +38,10 @@
 
   onMount(async () => {
     votes = (await storageGet("voting-history")) || [];
-    console.log(votes);
+    // also filter out nulls
+    votes = votes.filter(row => row.username).reverse();
     if (votes.length > 0) {
-      username = votes[votes.length - 1].username;
+      username = votes[0].username;
     }
   });
 </script>
