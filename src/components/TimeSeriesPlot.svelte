@@ -7,6 +7,17 @@
   export let label;
   export let transform = data => data;
 
+  // view-source:https://www.chartjs.org/samples/latest/utils.js
+  let colors = {
+    red: "rgb(255, 99, 132)",
+    orange: "rgb(255, 159, 64)",
+    yellow: "rgb(255, 205, 86)",
+    green: "rgb(75, 192, 192)",
+    blue: "rgb(54, 162, 235)",
+    purple: "rgb(153, 102, 255)",
+    grey: "rgb(201, 203, 207)"
+  };
+
   let plotElement;
   onMount(() => {
     new Chart(plotElement, {
@@ -16,7 +27,8 @@
           {
             label: label,
             data: transform(data),
-            backgroundColor: "rgba(0,0,255,0.5)",
+            backgroundColor: colors.blue,
+            borderColor: colors.blue,
             fill: false
           }
         ]
