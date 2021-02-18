@@ -23,6 +23,14 @@
       },
       options: {
         responsive: true,
+        tooltips: {
+          mode: "index",
+          intersect: false
+        },
+        hover: {
+          mode: "nearest",
+          intersect: true
+        },
         scales: {
           xAxes: [{ type: "time" }]
         }
