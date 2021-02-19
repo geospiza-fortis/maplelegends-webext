@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "maplelegends-webext",
-  "version": "0.4.1",
+  "version": "0.4.2",
 
   "description": "Adds plots to leveling history, tracks current server status, and maintains voting history.",
 
@@ -9,11 +9,10 @@
     "48": "icons/omok.png"
   },
   "permissions": [
-    "https://maplelegends.com/*",
-    "https://maplestory.io/api/character/*",
-    "tabs",
     "webNavigation",
     "storage",
+    "https://maplelegends.com/*",
+    "https://maplestory.io/api/character/*",
     "https://storage.googleapis.com/geospiza/query/maplelegends-online-count-7-day.json",
     "https://gtop100.com/topsites/MapleStory/*",
     "https://topg.org/maplestory-private-servers/*"
